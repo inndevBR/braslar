@@ -3,7 +3,7 @@
 #INCLUDE "rptDef.ch"
 Static lBorDia := .T. //1 numero de Bordero por dia
 /************************************************************************
-	Seleciona os titulos, para impressão do Bordero                                          
+	Seleciona os titulos, para impressão do Bordero 
 	Programador: Mario Araujo Oliveira  -  INNOVATE           25/10/17
 *************************************************************************/
 User Function IMPBOL()
@@ -12,7 +12,7 @@ Local lConti    := .T.
 Local bOK       := {||(lConti:= .T.,Odlg:End()) }
 Local bCanc     := {||(lConti:= .F.,Odlg:End()) }
 Local nI        := 1
-Local cBancHab  := SuperGetMv("MV_BANCBOL",,"005/341/237")
+Local cBancHab  := SuperGetMv("MV_BANCBOL",,"001/104/237/341/748")
 Private cPerg   := "IMPBOL"
 Private cAlias  := GetNextAlias()
 Private aCampos := {"E1_PREFIXO","E1_NUM","E1_PARCELA","E1_CLIENTE","E1_LOJA","A1_NREDUZ","E1_NUMBOR"}
