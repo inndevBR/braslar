@@ -187,6 +187,7 @@ BeginSql alias cAliasA
 	AND E1_BAIXA = ''
 	%Exp:cWhere%
 	AND %Table:SE1%.%NotDel%
+    ORDER BY A1_COD,A1_LOJA
 EndSQl
 
 While (cAliasA)->(!Eof())
