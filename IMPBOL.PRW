@@ -313,8 +313,8 @@ Return
 Static Function IMPBOL_A(aDados)
 Local cNomeRel  := ""		  	//Nome do relatório   
 Local lAtoL		:= .F.		  	//Ajusta o relatório nas proporções
-Local lDs		:= .f.		  	//Disable setup
-Local cLocal    := "\spool\"   //Local de impressao
+Local lDs		:= .F.		  	//Disable setup
+Local cLocal    := "\spool"   	//Local de impressao
 Local cALiasA   := GetNextAlias()
 Local nZ        := 0
 Local cWhere    := ""
@@ -323,7 +323,7 @@ Private oBoleto := Nil		  	//Objeto de impressão
 				
 //Define o nome do relatório
 cNomeRel := "Boleto-" + Dtos(Date()) + StrTran(Time(), ":", "")
-oBoleto := FWMSPrinter():New(cNomeRel, IMP_PDF, lAtoL, cLocal, lDS)
+oBoleto := FWMSPrinter():New(cNomeRel, IMP_PDF, lAtoL, cLocal, lDS, , , , , , .F., )
 oBoleto:SetPortrait()   
 oBoleto:SetPaperSize(9) 
 
@@ -434,7 +434,6 @@ Next nZ
 
 IncProc('Finalizando.. ')
 ProcessMessage()
-
 //Verifica se houve impressao
 If (oBoleto:nModalResult == PD_OK)
 	  //Verifica se foi cancelado                         
@@ -444,7 +443,7 @@ If (oBoleto:nModalResult == PD_OK)
  	EndIf
 EndIf       
 //Descarrega spool
-Ms_Flush() 
+Ms_Flush()
 Return
 /***********************************************************************
 	Retorna numero bordero.
@@ -463,9 +462,10 @@ IF lBorDia
 	EndSql
 	IF (cAlias)->(!Eof())
 		cRet := (cAlias)->EA_NUMBOR
+	Else
+		cRet := StrZero(Val(Soma1(GetMV("MV_NUMBORR"),6)), AvSx3("E1_NUMBOR",3))
 	EndIF 
-EndIF 
-IF Empty(cRet)
+Else
 	cRet := StrZero(Val(Soma1(GetMV("MV_NUMBORR"),6)), AvSx3("E1_NUMBOR",3))
 EndIF 
 If Select((cAlias)) > 0
