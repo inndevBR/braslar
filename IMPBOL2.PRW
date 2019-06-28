@@ -6,7 +6,7 @@ Static lBorDia := .T. //1 numero de Bordero por dia
 	Seleciona os titulos, para impressão do Bordero 
 	Programador: Mario Araujo Oliveira  -  INNOVATE           25/10/17
 *************************************************************************/
-User Function IMPBOL()
+User Function IMPBOL2()
 Local aArea     := GetArea()
 Local lConti    := .T.
 Local bOK       := {||(lConti:= .T.,Odlg:End()) }
@@ -477,7 +477,7 @@ Return cRet
 /***********************************************************************
 	Geração de boletos no final da emissão da NFe
 ***********************************************************************/
-User Function ImpBolA()
+User Function ImpBol2A()
 Local cChave     := SF2->F2_FILIAL + SF2->F2_CLIENTE + SF2->F2_LOJA+ SF2->F2_PREFIXO + SF2->F2_DOC 
 Local aDados     := {}
 Local lCont      := .T.
